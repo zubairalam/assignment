@@ -1,0 +1,7 @@
+Q5) Discuss . Multi-processing and Multi-threading in Python. What is GIL?
+Answer:
+In CPython, the global interpreter lock, or GIL, is a mutex that prevents multiple native threads from executing Python bytecodes at once. This lock is necessary mainly because CPython's memory management is not thread-safe.
+
+In multi-threading a python process spawns one or more threads which shares the same memory space but all them wait for the single core assigned to the main process.
+
+In Multi-Processing, more than one worker processes are created which can utilize the all the cores available on the system.

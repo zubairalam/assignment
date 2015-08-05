@@ -1,0 +1,21 @@
+Q4) I can define a field in a django form in the following 2 ways:
+    class MyForm(forms.Form):
+        myfield = forms.ChoiceField(choices=[(u.id, u.username) for u in User.objects.filter(type="TYPE1")])
+
+    AND also as
+
+    class MyForm(forms.Form):
+        pass
+
+        def __init__(self, *args, **kwargs):
+            super(MyForm, self).__init__(*args, **kwargs)
+            self.fields['myfield'] = forms.ChoiceField(choices=[(u.id, u.username) for u in User.objects.filter(type="TYPE1")])
+
+    What is the difference between the two approaches (if any)?
+
+Answer:
+If we need to add some `Dynamic Attribute & Values` then that is done by passing those dynamic values to constructor of the form which is recieved by __init__ function of the Form and then that can be applied to form fields.
+In above case if we want to assign value of `type` based upon user actions then that can be achieved like `form = MyForm(type='some_dynamic_value', *args, **kwargs)` and inside __init__ of MyForm 
+def __init__(self, type='TYPE1', *args, **kwargs):
+            super(MyForm, self).__init__(*args, **kwargs)
+            self.fields['myfield'] = forms.ChoiceField(choices=[(u.id, u.username) for u in User.objects.filter(type=type)])
