@@ -5,8 +5,8 @@ So if we need to write an enterprise level of app and don't want to follow Rapid
 2.
 If an app needs Concurrent processes.
 
-If a process spaws 2 threads then both of the threads will run on only one core assigned to the main process sequentially [GIL]. Jython & IronPython doesn't have GIL.
-Though if tasks are CPU bound and we need to utilize all cores available, Multiprocessing or Multitasking approach can work [Queuing and Scheduling using Celery+(RabbitMQ/Redis) by background worker processes]
+If a process spawns 2 threads then both of the threads will run on only one core assigned to the main process sequentially [GIL]. Jython & IronPython doesn't have GIL.
+Though if tasks are CPU bound and we need to utilize all cores available, Multiprocessing or Multitasking approach can work [Queuing and Scheduling using Celery+(RabbitMQ/Redis) and processed by background worker processes]
 
 The java.util.concurrent library in Java makes writing concurrent applications on a single machine simpler.
 
